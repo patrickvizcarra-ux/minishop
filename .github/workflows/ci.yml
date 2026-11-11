@@ -1,0 +1,76 @@
+name: MiniShop CI
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: Build y pruebas
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v7
+
+      - name: Configurar Java 17 y caché Maven
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Compilar y empaquetar
+        run: mvn --batch-mode -DskipUTs=true package
+
+      - name: Ejecutar pruebas unitarias (Surefire)
+        run: mvn --batch-mode -DskipUTs=false surefire:test
+
+      - name: Ejecutar pruebas de integración (Failsafe)
+        run: mvn --batch-mode -DskipUTs=true failsafe:integration-test failsafe:verify
+
+      - name: Guardar reportes de pruebas
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: reportes-maven
+          path: |
+            target/surefire-reports/**
+            target/failsafe-reports/**
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Guardar JAR
+        uses: actions/upload-artifact@v7
+        with:
+          name: minishop-jar
+          path: target/minishop-1.0.0.jar
+          if-no-files-found: error
+          retention-days: 14
+
+  release:
+    name: Publicar GitHub Release
+    needs: build-and-test
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Descargar JAR validado
+        uses: actions/download-artifact@v8
+        with:
+          name: minishop-jar
+          path: dist
+
+      - name: Publicar Release y adjuntar JAR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/minishop-1.0.0.jar --verify-tag --title "MiniShop $GITHUB_REF_NAME" --generate-notes

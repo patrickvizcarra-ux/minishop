@@ -1,21 +1,38 @@
-# MiniShop — Laboratorio 12: Pruebas de Integración
+# MiniShop — Laboratorio 13: Integración continua
 
-API REST para registrar y consultar productos con Spring Boot, Spring Data JPA y H2.
+API REST para registrar y consultar productos con Spring Boot 3.2.12, Spring Data JPA y H2.
+
+<!-- Reemplaza OWNER/REPOSITORY por el propietario y nombre reales después de crear el repositorio. -->
+[![Build y pruebas](https://github.com/OWNER/REPOSITORY/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPOSITORY/actions/workflows/ci.yml)
 
 ## Requisitos
-- JDK 17 o superior
-- Maven 3.8 o superior
 
-## Ejecutar
+- JDK 17
+- Maven 3.9.16 (o Maven 3.8 o superior)
+
+## Compilar y probar
+
 ```bash
-mvn test
+mvn clean verify
 ```
-La suite contiene 13 pruebas: 4 para Repository con `@DataJpaTest`, 5 para Service con `@SpringBootTest` y `@MockBean`, y 4 para Controller con `MockMvc` y H2.
+
+Surefire ejecuta las 3 pruebas unitarias de `ProductServiceTest`. Failsafe ejecuta las 13 pruebas de integración cuyos nombres terminan en `IT`: 4 de repositorio, 5 de servicio y 4 de controlador.
+
+Para ejecutar cada grupo por separado:
+
+```bash
+mvn -DskipUTs=false surefire:test
+mvn -DskipUTs=true failsafe:integration-test failsafe:verify
+```
+
+El workflow de GitHub Actions está en `.github/workflows/ci.yml`. En cada ejecución almacena reportes Maven y el JAR como artifacts. Cuando se publica una etiqueta `v*`, el job de Release adjunta el JAR a una GitHub Release.
 
 ## Endpoints
+
 - `POST /api/products` — registrar producto (JSON: `name`, `price`, `stock`)
 - `GET /api/products` — listar productos
 - `GET /api/products/{id}` — consultar por ID
 
-## Conclusiones
-Las pruebas de repositorio comprueban consultas y persistencia con una base de datos real en memoria. Las pruebas del servicio aíslan su lógica y validaciones mediante un mock del repositorio. Las pruebas del controlador recorren la petición HTTP, las capas de negocio y persistencia, y la respuesta JSON. Estos niveles se complementan: cada uno localiza fallos en una frontera distinta y la base H2 permite repetir las pruebas sin infraestructura externa.
+## Protección de `main`
+
+Las instrucciones para crear el ruleset `proteger-main` están en [`.github/BRANCH_PROTECTION.md`](.github/BRANCH_PROTECTION.md). La protección debe configurarse en GitHub; este repositorio local no puede confirmar si está activa.
