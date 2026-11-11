@@ -10,7 +10,7 @@ public class ProductService {
     private final ProductRepository productRepository;
     public ProductService(ProductRepository productRepository) { this.productRepository = productRepository; }
     public Product save(Product product) {
-        if (product.getPrice() == null || product.getPrice() <= 0)
+        if (product.getPrice() == null || product.getPrice() < 0)
             throw new IllegalArgumentException("El precio debe ser mayor a cero");
         if (product.getStock() == null || product.getStock() < 0)
             throw new IllegalArgumentException("El stock no puede ser negativo");
