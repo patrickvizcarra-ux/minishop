@@ -64,6 +64,9 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Descargar el código para verificar la etiqueta
+        uses: actions/checkout@v7
+
       - name: Descargar JAR validado
         uses: actions/download-artifact@v8
         with:
