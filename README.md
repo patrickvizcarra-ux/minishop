@@ -2,8 +2,8 @@
 
 API REST para registrar y consultar productos con Spring Boot 3.2.12, Spring Data JPA y H2.
 
-<!-- Reemplaza OWNER/REPOSITORY por el propietario y nombre reales después de crear el repositorio. -->
-[![Build y pruebas](https://github.com/OWNER/REPOSITORY/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPOSITORY/actions/workflows/ci.yml)
+<!-- Badge del workflow de integración continua de MiniShop. -->
+[![Build y pruebas](https://github.com/patrickvizcarra-ux/minishop/actions/workflows/ci.yml/badge.svg)](https://github.com/patrickvizcarra-ux/minishop/actions/workflows/ci.yml)
 
 ## Requisitos
 
