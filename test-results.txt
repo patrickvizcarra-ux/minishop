@@ -1,0 +1,176 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< com.tecsup:minishop >-------------------------
+[INFO] Building minishop 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ minishop ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ minishop ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 5 source files with javac [debug release 17] to target/classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ minishop ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ minishop ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 3 source files with javac [debug release 17] to target/test-classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ minishop ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.tecsup.minishop.repository.ProductRepositoryIntegrationTest
+19:30:31.018 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.tecsup.minishop.repository.ProductRepositoryIntegrationTest]: ProductRepositoryIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:30:31.073 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.tecsup.minishop.MiniShopApplication for test class com.tecsup.minishop.repository.ProductRepositoryIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v3.2.12)
+
+2026-11-04T19:30:31.234-05:00  INFO 94399 --- [minishop] [           main] c.t.m.r.ProductRepositoryIntegrationTest : Starting ProductRepositoryIntegrationTest using Java 21.0.11 with PID 94399 (started by patrick in /Users/patrick/Documents/Codex/2026-11-04/tenem/outputs/minishop)
+2026-11-04T19:30:31.235-05:00  INFO 94399 --- [minishop] [           main] c.t.m.r.ProductRepositoryIntegrationTest : No active profile set, falling back to 1 default profile: "default"
+2026-11-04T19:30:31.387-05:00  INFO 94399 --- [minishop] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04T19:30:31.417-05:00  INFO 94399 --- [minishop] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 1 JPA repository interface.
+2026-11-04T19:30:31.438-05:00  INFO 94399 --- [minishop] [           main] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
+2026-11-04T19:30:31.502-05:00  INFO 94399 --- [minishop] [           main] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:4a12067f-59c9-486f-bd1c-276af849f236;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2026-11-04T19:30:31.639-05:00  INFO 94399 --- [minishop] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-04T19:30:31.667-05:00  INFO 94399 --- [minishop] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.10.Final
+2026-11-04T19:30:31.682-05:00  INFO 94399 --- [minishop] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-04T19:30:31.781-05:00  INFO 94399 --- [minishop] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04T19:30:31.803-05:00  WARN 94399 --- [minishop] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-04T19:30:32.149-05:00  INFO 94399 --- [minishop] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists products cascade 
+Hibernate: create table products (price float(53) not null, stock integer not null, id bigint generated by default as identity, name varchar(255) not null, primary key (id))
+2026-11-04T19:30:32.164-05:00  INFO 94399 --- [minishop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04T19:30:32.317-05:00  INFO 94399 --- [minishop] [           main] c.t.m.r.ProductRepositoryIntegrationTest : Started ProductRepositoryIntegrationTest in 1.217 seconds (process running for 1.668)
+WARNING: A Java agent has been loaded dynamically (/Users/patrick/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Hibernate: select p1_0.id,p1_0.name,p1_0.price,p1_0.stock from products p1_0
+Hibernate: insert into products (name,price,stock,id) values (?,?,?,default)
+Hibernate: select p1_0.id,p1_0.name,p1_0.price,p1_0.stock from products p1_0
+Hibernate: insert into products (name,price,stock,id) values (?,?,?,default)
+Hibernate: insert into products (name,price,stock,id) values (?,?,?,default)
+Hibernate: insert into products (name,price,stock,id) values (?,?,?,default)
+Hibernate: select p1_0.id,p1_0.name,p1_0.price,p1_0.stock from products p1_0 where upper(p1_0.name) like upper(?) escape '\'
+Hibernate: select p1_0.id,p1_0.name,p1_0.price,p1_0.stock from products p1_0
+Hibernate: insert into products (name,price,stock,id) values (?,?,?,default)
+Hibernate: select p1_0.id,p1_0.name,p1_0.price,p1_0.stock from products p1_0
+Hibernate: select p1_0.id,p1_0.name,p1_0.price,p1_0.stock from products p1_0 where p1_0.id=?
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.836 s -- in com.tecsup.minishop.repository.ProductRepositoryIntegrationTest
+[INFO] Running com.tecsup.minishop.controller.ProductControllerIntegrationTest
+2026-11-04T19:30:32.773-05:00  INFO 94399 --- [minishop] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.tecsup.minishop.controller.ProductControllerIntegrationTest]: ProductControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-04T19:30:32.778-05:00  INFO 94399 --- [minishop] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.tecsup.minishop.MiniShopApplication for test class com.tecsup.minishop.controller.ProductControllerIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v3.2.12)
+
+2026-11-04T19:30:32.804-05:00  INFO 94399 --- [minishop] [           main] c.t.m.c.ProductControllerIntegrationTest : Starting ProductControllerIntegrationTest using Java 21.0.11 with PID 94399 (started by patrick in /Users/patrick/Documents/Codex/2026-11-04/tenem/outputs/minishop)
+2026-11-04T19:30:32.804-05:00  INFO 94399 --- [minishop] [           main] c.t.m.c.ProductControllerIntegrationTest : The following 1 profile is active: "test"
+2026-11-04T19:30:32.942-05:00  INFO 94399 --- [minishop] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04T19:30:32.945-05:00  INFO 94399 --- [minishop] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 1 JPA repository interface.
+2026-11-04T19:30:33.007-05:00  INFO 94399 --- [minishop] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-04T19:30:33.009-05:00  INFO 94399 --- [minishop] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-04T19:30:33.011-05:00  INFO 94399 --- [minishop] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04T19:30:33.012-05:00  INFO 94399 --- [minishop] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-04T19:30:33.017-05:00  INFO 94399 --- [minishop] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn8: url=jdbc:h2:mem:testdb user=SA
+2026-11-04T19:30:33.018-05:00  INFO 94399 --- [minishop] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-04T19:30:33.020-05:00  WARN 94399 --- [minishop] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-04T19:30:33.037-05:00  INFO 94399 --- [minishop] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists products cascade 
+Hibernate: create table products (price float(53) not null, stock integer not null, id bigint generated by default as identity, name varchar(255) not null, primary key (id))
+2026-11-04T19:30:33.039-05:00  INFO 94399 --- [minishop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04T19:30:33.106-05:00  WARN 94399 --- [minishop] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-04T19:30:33.307-05:00  INFO 94399 --- [minishop] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2026-11-04T19:30:33.327-05:00  INFO 94399 --- [minishop] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-04T19:30:33.327-05:00  INFO 94399 --- [minishop] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-04T19:30:33.328-05:00  INFO 94399 --- [minishop] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-11-04T19:30:33.335-05:00  INFO 94399 --- [minishop] [           main] c.t.m.c.ProductControllerIntegrationTest : Started ProductControllerIntegrationTest in 0.55 seconds (process running for 2.685)
+Hibernate: select p1_0.id,p1_0.name,p1_0.price,p1_0.stock from products p1_0
+Hibernate: insert into products (name,price,stock,id) values (?,?,?,default)
+Hibernate: select p1_0.id,p1_0.name,p1_0.price,p1_0.stock from products p1_0
+Hibernate: delete from products where id=?
+Hibernate: select p1_0.id,p1_0.name,p1_0.price,p1_0.stock from products p1_0 where p1_0.id=?
+Hibernate: select p1_0.id,p1_0.name,p1_0.price,p1_0.stock from products p1_0
+Hibernate: insert into products (name,price,stock,id) values (?,?,?,default)
+Hibernate: select p1_0.id,p1_0.name,p1_0.price,p1_0.stock from products p1_0 where p1_0.id=?
+Hibernate: select p1_0.id,p1_0.name,p1_0.price,p1_0.stock from products p1_0
+Hibernate: delete from products where id=?
+Hibernate: insert into products (name,price,stock,id) values (?,?,?,default)
+Hibernate: insert into products (name,price,stock,id) values (?,?,?,default)
+Hibernate: select p1_0.id,p1_0.name,p1_0.price,p1_0.stock from products p1_0
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.685 s -- in com.tecsup.minishop.controller.ProductControllerIntegrationTest
+[INFO] Running com.tecsup.minishop.service.ProductServiceIntegrationTest
+2026-11-04T19:30:33.460-05:00  INFO 94399 --- [minishop] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.tecsup.minishop.service.ProductServiceIntegrationTest]: ProductServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-04T19:30:33.467-05:00  INFO 94399 --- [minishop] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.tecsup.minishop.MiniShopApplication for test class com.tecsup.minishop.service.ProductServiceIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v3.2.12)
+
+2026-11-04T19:30:33.479-05:00  INFO 94399 --- [minishop] [           main] c.t.m.s.ProductServiceIntegrationTest    : Starting ProductServiceIntegrationTest using Java 21.0.11 with PID 94399 (started by patrick in /Users/patrick/Documents/Codex/2026-11-04/tenem/outputs/minishop)
+2026-11-04T19:30:33.479-05:00  INFO 94399 --- [minishop] [           main] c.t.m.s.ProductServiceIntegrationTest    : The following 1 profile is active: "test"
+2026-11-04T19:30:33.531-05:00  INFO 94399 --- [minishop] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04T19:30:33.535-05:00  INFO 94399 --- [minishop] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 1 JPA repository interface.
+2026-11-04T19:30:33.648-05:00  INFO 94399 --- [minishop] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-04T19:30:33.650-05:00  INFO 94399 --- [minishop] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-04T19:30:33.652-05:00  INFO 94399 --- [minishop] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04T19:30:33.653-05:00  INFO 94399 --- [minishop] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-11-04T19:30:33.653-05:00  INFO 94399 --- [minishop] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn18: url=jdbc:h2:mem:testdb user=SA
+2026-11-04T19:30:33.654-05:00  INFO 94399 --- [minishop] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-11-04T19:30:33.654-05:00  WARN 94399 --- [minishop] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-04T19:30:33.668-05:00  INFO 94399 --- [minishop] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists products cascade 
+Hibernate: create table products (price float(53) not null, stock integer not null, id bigint generated by default as identity, name varchar(255) not null, primary key (id))
+2026-11-04T19:30:33.670-05:00  INFO 94399 --- [minishop] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04T19:30:33.686-05:00  WARN 94399 --- [minishop] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-04T19:30:33.900-05:00  INFO 94399 --- [minishop] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2026-11-04T19:30:33.944-05:00  INFO 94399 --- [minishop] [           main] c.t.m.s.ProductServiceIntegrationTest    : Started ProductServiceIntegrationTest in 0.476 seconds (process running for 3.295)
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.512 s -- in com.tecsup.minishop.service.ProductServiceIntegrationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.104 s
+[INFO] Finished at: 2026-11-04T19:30:34-05:00
+[INFO] ------------------------------------------------------------------------
