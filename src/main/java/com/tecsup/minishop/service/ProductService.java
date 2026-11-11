@@ -10,11 +10,15 @@ public class ProductService {
     private final ProductRepository productRepository;
     public ProductService(ProductRepository productRepository) { this.productRepository = productRepository; }
     public Product save(Product product) {
+        validarProducto(product);
+        return productRepository.save(product);
+    }
+
+    private void validarProducto(Product product) {
         if (product.getPrice() == null || product.getPrice() <= 0)
             throw new IllegalArgumentException("El precio debe ser mayor a cero");
         if (product.getStock() == null || product.getStock() < 0)
             throw new IllegalArgumentException("El stock no puede ser negativo");
-        return productRepository.save(product);
     }
     public List<Product> findAll() { return productRepository.findAll(); }
     public Product findById(Long id) {
