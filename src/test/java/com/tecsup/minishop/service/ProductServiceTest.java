@@ -34,8 +34,22 @@ class ProductServiceTest {
     }
 
     @Test
+    void shouldRejectProductWithNullPrice() {
+        Product product = Product.builder().name("Producto sin precio").price(null).stock(5).build();
+
+        assertThrows(IllegalArgumentException.class, () -> productService.save(product));
+    }
+
+    @Test
     void shouldRejectProductWithNegativeStock() {
         Product product = Product.builder().name("Producto sin stock").price(10.0).stock(-1).build();
+
+        assertThrows(IllegalArgumentException.class, () -> productService.save(product));
+    }
+
+    @Test
+    void shouldRejectProductWithNullStock() {
+        Product product = Product.builder().name("Producto sin stock definido").price(10.0).stock(null).build();
 
         assertThrows(IllegalArgumentException.class, () -> productService.save(product));
     }

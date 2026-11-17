@@ -19,37 +19,45 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Descargar el código
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Configurar Java 17 y caché Maven
-        uses: actions/setup-java@v6
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
           cache: maven
 
-      - name: Compilar y empaquetar
-        run: mvn --batch-mode -DskipUTs=true package
+      - name: Compilar
+        run: mvn -B -DskipUTs=true compile
 
       - name: Ejecutar pruebas unitarias (Surefire)
-        run: mvn --batch-mode -DskipUTs=false surefire:test
+        run: mvn -B -DskipUTs=false test
 
       - name: Ejecutar pruebas de integración (Failsafe)
-        run: mvn --batch-mode -DskipUTs=true failsafe:integration-test failsafe:verify
+        run: mvn -B -DskipUTs=true verify
+
+      - name: Analizar con SonarQube Cloud
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
 
       - name: Guardar reportes de pruebas
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: reportes-maven
           path: |
             target/surefire-reports/**
             target/failsafe-reports/**
+            target/site/jacoco/**
           if-no-files-found: warn
           retention-days: 14
 
       - name: Guardar JAR
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: minishop-jar
           path: target/minishop-1.0.0.jar
