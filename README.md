@@ -55,6 +55,8 @@ Para conectar o revisar el proyecto, inicia sesión en [SonarQube Cloud](https:/
 - `GET /api/products` — listar productos
 - `GET /api/products/{id}` — consultar por ID
 
+La solicitud de creación se recibe mediante `ProductRequest`, un DTO que limita los campos de entrada a `name`, `price` y `stock`. El identificador lo asigna la base de datos.
+
 ## Protección de `main`
 
 Las instrucciones para crear el ruleset `proteger-main` están en [`.github/BRANCH_PROTECTION.md`](.github/BRANCH_PROTECTION.md). La protección debe configurarse en GitHub; este repositorio local no puede confirmar si está activa.

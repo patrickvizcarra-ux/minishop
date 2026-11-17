@@ -2,6 +2,7 @@ package com.tecsup.minishop.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tecsup.minishop.model.Product;
+import com.tecsup.minishop.dto.ProductRequest;
 import com.tecsup.minishop.repository.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.not;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -27,12 +29,21 @@ class ProductControllerIT {
 
     @Test @DisplayName("POST /api/products — debe crear un producto y retornar 201")
     void shouldCreateProductAndReturn201() throws Exception {
-        Product product = Product.builder().name("Webcam Logitech").price(250.00).stock(20).build();
+        ProductRequest product = new ProductRequest("Webcam Logitech", 250.00, 20);
         mockMvc.perform(post("/api/products").contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(product)))
             .andExpect(status().isCreated()).andExpect(jsonPath("$.id").isNotEmpty())
             .andExpect(jsonPath("$.name").value("Webcam Logitech"))
             .andExpect(jsonPath("$.price").value(250.00)).andExpect(jsonPath("$.stock").value(20));
+    }
+
+    @Test @DisplayName("POST /api/products — debe ignorar el ID enviado por el cliente")
+    void shouldIgnoreClientProvidedId() throws Exception {
+        String request = "{\"id\":999,\"name\":\"Teclado\",\"price\":89.9,\"stock\":12}";
+
+        mockMvc.perform(post("/api/products").contentType(MediaType.APPLICATION_JSON).content(request))
+            .andExpect(status().isCreated())
+            .andExpect(jsonPath("$.id").value(not(999)));
     }
     @Test @DisplayName("GET /api/products — debe retornar lista de productos")
     void shouldReturnAllProducts() throws Exception {
